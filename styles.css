@@ -100,7 +100,7 @@ small{ color: var(--muted2); }
 }
 
 /* =========================
-   TOPBAR (DARK like mock)
+   TOPBAR
 ========================= */
 .topbar{
   background: rgba(15,28,23,.98);
@@ -121,13 +121,13 @@ small{ color: var(--muted2); }
 .dot{ opacity: .65; margin: 0 8px; }
 
 /* =========================
-   HEADER / NAV (DARK like mock)
+   HEADER / NAV
 ========================= */
 .header{
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(15,28,23,.88);
+  background: rgba(15,28,23,.90);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,.10);
 }
@@ -264,49 +264,55 @@ small{ color: var(--muted2); }
 .btn-dark:hover{ filter: brightness(.98); }
 
 /* =========================
-   HERO (MOCK STYLE)
+   HERO (SINGLE SOURCE OF TRUTH)
+   Uses your cropped hero image: /assets/truss-hero.jpg
 ========================= */
 .hero,
 .page-hero{
-  position: relative;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+
   color: #fff;
-  padding: 92px 0 84px;
+  padding: 40px 0;
   border-bottom: 1px solid rgba(255,255,255,.10);
 
   background:
-    radial-gradient(900px 420px at 14% 10%, rgba(216,167,75,.14), transparent 55%),
+    radial-gradient(900px 420px at 14% 10%, rgba(216,167,75,.10), transparent 55%),
     linear-gradient(90deg,
-      rgba(12,40,25,.88) 0%,
-      rgba(12,40,25,.72) 42%,
-      rgba(12,40,25,.28) 100%
+      rgba(10,10,10,.82) 0%,
+      rgba(10,10,10,.55) 45%,
+      rgba(10,10,10,.08) 100%
     ),
-    url('/assets/truss.jpg');
+    url("/assets/truss-hero.jpg");
+
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: right center;
 }
 
 .hero-inner,
 .page-hero-inner{
-  max-width: 720px;
+  max-width: 760px;
   margin: 0;
   text-align: left;
-  padding: 0 var(--pad);
+  padding-left: clamp(32px, 4vw, 70px);
+  padding-right: var(--pad);
 }
 
 .hero h1,
 .page-hero h1{
-  font-size: clamp(2.4rem, 4.6vw, 3.5rem);
-  line-height: 1.08;
+  font-size: clamp(2.7rem, 5vw, 4rem);
+  line-height: 1.05;
   margin: 0 0 14px;
   letter-spacing: -0.03em;
   font-weight: 950;
 }
 
 .hero-sub{
-  font-size: 1.05rem;
-  max-width: 620px;
-  margin: 0 0 22px;
+  font-size: 1.08rem;
+  max-width: 640px;
+  margin: 0 0 24px;
   color: rgba(255,255,255,.88);
 }
 
@@ -315,7 +321,7 @@ small{ color: var(--muted2); }
   justify-content:flex-start;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .hero-trust{
@@ -324,12 +330,25 @@ small{ color: var(--muted2); }
   margin: 0;
   display:flex;
   justify-content:flex-start;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
-  font-size: .95rem;
-  color: rgba(255,255,255,.82);
+  font-size: .92rem;
+  color: rgba(255,255,255,.78);
 }
-.hero-trust li{ display:flex; align-items:center; gap: 8px; }
+
+/* Slightly tighten hero on small screens */
+@media (max-width: 900px){
+  .hero,
+  .page-hero{
+    min-height: 520px;
+    background-position: 70% 50%;
+  }
+  .hero-inner,
+  .page-hero-inner{
+    padding-left: var(--pad);
+    padding-right: var(--pad);
+  }
+}
 
 /* =========================
    GRID + CARDS
@@ -505,100 +524,4 @@ small{ color: var(--muted2); }
 
 @media (max-width: 768px){
   .footer .container{ grid-template-columns: 1fr; }
-}
-
-/* =========================================
-   MOCKUP OVERRIDES (PASTE AT BOTTOM)
-   Makes hero match the mock:
-   - Neutral dark overlay (not green)
-   - Left->right fade
-   - Left aligned content
-   - No “green wash”
-========================================= */
-
-.hero,
-.page-hero{
-  /* stronger + more neutral overlay (kills the green tint) */
-  background:
-    radial-gradient(900px 420px at 14% 10%, rgba(216,167,75,.12), transparent 55%),
-    linear-gradient(90deg,
-      rgba(15,28,23,.92) 0%,
-      rgba(15,28,23,.78) 42%,
-      rgba(15,28,23,.28) 100%
-    ),
-    url("/assets/truss.jpg") !important;
-
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-
-  /* push the image framing to show more “right side” like the mock */
-  background-position: 70% 50% !important;
-
-  color: #fff !important;
-  padding: 92px 0 84px !important;
-  border-bottom: 1px solid rgba(255,255,255,.10) !important;
-}
-
-.hero-inner,
-.page-hero-inner{
-  max-width: 720px !important;
-  margin: 0 !important;
-  text-align: left !important;
-  padding: 0 var(--pad) !important;
-
-  /* IMPORTANT: no glass box */
-  background: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-}
-
-.hero h1,
-.page-hero h1{
-  font-weight: 950 !important;
-  letter-spacing: -0.03em !important;
-  line-height: 1.08 !important;
-}
-
-.hero-actions{
-  justify-content: flex-start !important;
-}
-
-.hero-trust{
-  justify-content: flex-start !important;
-  color: rgba(255,255,255,.82) !important;
-}
-
-/* Header should feel like the mock: dark, slightly transparent */
-.header{
-  background: rgba(15,28,23,.90) !important;
-  border-bottom: 1px solid rgba(255,255,255,.10) !important;
-}
-
-.navlinks a{
-  color: rgba(255,255,255,.92) !important;
-}
-
-.navlinks a:hover{
-  background: rgba(255,255,255,.10) !important;
-  color: #fff !important;
-}
-
-.navlinks a.active{
-  background: rgba(255,255,255,.12) !important;
-  border: 1px solid rgba(255,255,255,.16) !important;
-  color: #fff !important;
-}
-
-/* ===== HERO: match the mock scale + framing ===== */
-.hero,
-.page-hero{
-  min-height: 540px !important;          /* makes hero larger like the mock */
-  display: flex !important;
-  align-items: center !important;
-
-  /* show more of the right-side truss */
-  background-position: 86% 40% !important;
-
-  /* keep cover, but reduce "zoom" slightly */
-  background-size: 110% auto !important;
 }
