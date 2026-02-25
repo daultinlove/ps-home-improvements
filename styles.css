@@ -506,3 +506,85 @@ small{ color: var(--muted2); }
 @media (max-width: 768px){
   .footer .container{ grid-template-columns: 1fr; }
 }
+
+/* =========================================
+   MOCKUP OVERRIDES (PASTE AT BOTTOM)
+   Makes hero match the mock:
+   - Neutral dark overlay (not green)
+   - Left->right fade
+   - Left aligned content
+   - No “green wash”
+========================================= */
+
+.hero,
+.page-hero{
+  /* stronger + more neutral overlay (kills the green tint) */
+  background:
+    radial-gradient(900px 420px at 14% 10%, rgba(216,167,75,.12), transparent 55%),
+    linear-gradient(90deg,
+      rgba(15,28,23,.92) 0%,
+      rgba(15,28,23,.78) 42%,
+      rgba(15,28,23,.28) 100%
+    ),
+    url("/assets/truss.jpg") !important;
+
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+
+  /* push the image framing to show more “right side” like the mock */
+  background-position: 70% 50% !important;
+
+  color: #fff !important;
+  padding: 92px 0 84px !important;
+  border-bottom: 1px solid rgba(255,255,255,.10) !important;
+}
+
+.hero-inner,
+.page-hero-inner{
+  max-width: 720px !important;
+  margin: 0 !important;
+  text-align: left !important;
+  padding: 0 var(--pad) !important;
+
+  /* IMPORTANT: no glass box */
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.hero h1,
+.page-hero h1{
+  font-weight: 950 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.08 !important;
+}
+
+.hero-actions{
+  justify-content: flex-start !important;
+}
+
+.hero-trust{
+  justify-content: flex-start !important;
+  color: rgba(255,255,255,.82) !important;
+}
+
+/* Header should feel like the mock: dark, slightly transparent */
+.header{
+  background: rgba(15,28,23,.90) !important;
+  border-bottom: 1px solid rgba(255,255,255,.10) !important;
+}
+
+.navlinks a{
+  color: rgba(255,255,255,.92) !important;
+}
+
+.navlinks a:hover{
+  background: rgba(255,255,255,.10) !important;
+  color: #fff !important;
+}
+
+.navlinks a.active{
+  background: rgba(255,255,255,.12) !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color: #fff !important;
+}
