@@ -92,15 +92,11 @@
         <h3 class="h3">Estimate Request</h3>
         <p class="p">Tell us about your project and we’ll contact you with next steps.</p>
 
-        <!-- Hidden iframe prevents Formspree from taking the browser to formspree.io/thanks -->
-        <iframe name="hidden_iframe" style="display:none;"></iframe>
-
         <form
           id="estimateForm"
           class="form"
           action="https://formspree.io/f/xykdlbgj"
           method="POST"
-          target="hidden_iframe"
         >
           <input type="hidden" name="_subject" value="New Estimate Request - P&S Website" />
           <input type="text" name="_gotcha" style="display:none" />
@@ -134,11 +130,12 @@
               name="message"
               rows="5"
               placeholder="Tell us what you want done, timeline, and any details. Photos help with faster quotes."
+              required
             ></textarea>
           </div>
 
-          <button class="btn btn-primary" type="submit">Send Request</button>
-          <p class="fineprint">We’ll respond as soon as possible. If urgent, call (270) 446-9463.</p>
+          <button id="submitBtn" class="btn btn-primary" type="submit">Send Request</button>
+          <p id="formStatus" class="fineprint" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -168,24 +165,42 @@
     <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   </footer>
 
-  <!-- Redirect to your own thank-you page after submit -->
   <script>
     (function () {
       const form = document.getElementById("estimateForm");
+      const btn = document.getElementById("submitBtn");
+      const status = document.getElementById("formStatus");
       if (!form) return;
 
-      form.addEventListener("submit", function () {
-        // optional: track submit click as an event
-        try {
-          if (typeof gtag === "function") {
-            gtag("event", "estimate_form_submit", { page_path: "/contact.html" });
-          }
-        } catch (e) {}
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-        // tiny delay so the POST fires, then go to your page
-        setTimeout(function () {
-          window.location.href = "/thank-you.html";
-        }, 200);
+        // basic spam trap
+        const gotcha = form.querySelector('input[name="_gotcha"]');
+        if (gotcha && gotcha.value) return;
+
+        if (status) status.textContent = "Sending...";
+        if (btn) btn.disabled = true;
+
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          });
+
+          if (res.ok) {
+            try { gtag("event", "estimate_form_submit", { page_path: "/contact.html" }); } catch (_) {}
+            // small delay like your LCD setup
+            setTimeout(() => { window.location.href = "/thank-you.html"; }, 200);
+          } else {
+            if (status) status.textContent = "Couldn’t send. Please call (270) 446-9463.";
+            if (btn) btn.disabled = false;
+          }
+        } catch (err) {
+          if (status) status.textContent = "Network error. Please try again or call (270) 446-9463.";
+          if (btn) btn.disabled = false;
+        }
       });
     })();
   </script>
