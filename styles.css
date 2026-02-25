@@ -62,6 +62,7 @@ p { margin: 0; }
 }
 
 .section{ padding: 72px 0; }
+
 .band{
   background: var(--surface);
   border-top: 1px solid rgba(15,28,23,.06);
@@ -85,7 +86,7 @@ small{ color: var(--muted2); }
   text-transform: uppercase;
   font-size: 12px;
   color: rgba(255,255,255,.88);
-  background: rgba(15,28,23,.18);
+  background: rgba(15,28,23,.22);
   border: 1px solid rgba(255,255,255,.14);
   padding: 6px 10px;
   border-radius: 999px;
@@ -99,10 +100,10 @@ small{ color: var(--muted2); }
 }
 
 /* =========================
-   TOPBAR
+   TOPBAR (DARK - MOCK STYLE)
 ========================= */
 .topbar{
-  background: var(--ink);
+  background: rgba(15,28,23,.95);
   color: #e7efe9;
   font-size: 13px;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -120,15 +121,15 @@ small{ color: var(--muted2); }
 .dot{ opacity: .65; margin: 0 8px; }
 
 /* =========================
-   HEADER / NAV (ONE SYSTEM)
+   HEADER / NAV (DARK - MOCK STYLE)
 ========================= */
 .header{
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255,255,255,.94);
+  background: rgba(15,28,23,.88);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
 .nav{
@@ -145,23 +146,27 @@ small{ color: var(--muted2); }
   gap: 12px;
   min-width: 240px;
   flex: 0 0 auto;
+  color: #fff;
 }
 
 .brand-logo{
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   object-fit: contain;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(15,28,23,.10);
+  border-radius: 999px;
+  background: rgba(255,255,255,.10);
+  border: 1px solid rgba(255,255,255,.18);
   padding: 6px;
 }
 
 .brand-name{
   font-weight: 950;
-  color: var(--ink);
+  color: #fff;
   letter-spacing: -0.01em;
+}
+.brand small,
+.brand .brand-sub{
+  color: rgba(255,255,255,.75);
 }
 
 .navlinks{
@@ -173,24 +178,24 @@ small{ color: var(--muted2); }
 }
 
 .navlinks a{
-  text-decoration:none;
   font-weight: 850;
   font-size: 14px;
   padding: 10px 12px;
   border-radius: 12px;
   transition: background .2s ease, color .2s ease, border-color .2s ease;
   border: 1px solid transparent;
+  color: rgba(255,255,255,.92);
 }
 
 .navlinks a:hover{
-  background: var(--surface);
-  color: var(--forest);
+  background: rgba(255,255,255,.10);
+  color: #fff;
 }
 
 .navlinks a.active{
-  background: linear-gradient(135deg, rgba(216,167,75,.18), rgba(216,167,75,.06));
-  border: 1px solid rgba(216,167,75,.32);
-  color: var(--ink);
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.16);
+  color: #fff;
 }
 
 .nav-cta{
@@ -200,15 +205,14 @@ small{ color: var(--muted2); }
   padding: 12px 16px;
   border-radius: 999px;
   font-weight: 900;
-  text-decoration:none;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: #0f1c17;
-  box-shadow: 0 10px 22px rgba(216,167,75,.20);
+  box-shadow: 0 10px 22px rgba(216,167,75,.22);
   white-space: nowrap;
 }
-.nav-cta:hover{ box-shadow: 0 14px 30px rgba(216,167,75,.28); }
+.nav-cta:hover{ box-shadow: 0 14px 30px rgba(216,167,75,.30); }
 
-/* Mobile: keep it simple for demo (no checkbox menus) */
+/* Mobile */
 @media (max-width: 900px){
   .nav{ flex-wrap: wrap; }
   .brand{ min-width: unset; }
@@ -220,9 +224,7 @@ small{ color: var(--muted2); }
 
 /* HARD KILL any old checkbox menu artifacts */
 .menu-toggle,
-.hamburger {
-  display: none !important;
-}
+.hamburger { display: none !important; }
 
 /* =========================
    BUTTONS
@@ -235,7 +237,6 @@ small{ color: var(--muted2); }
   padding: 12px 18px;
   border-radius: 999px;
   font-weight: 900;
-  text-decoration:none;
   border: 1px solid transparent;
   transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
 }
@@ -243,20 +244,20 @@ small{ color: var(--muted2); }
 .btn-primary{
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: #0f1c17;
-  box-shadow: 0 10px 22px rgba(216,167,75,.20);
+  box-shadow: 0 10px 22px rgba(216,167,75,.22);
 }
 .btn-primary:hover{
-  box-shadow: 0 14px 30px rgba(216,167,75,.28);
+  box-shadow: 0 14px 30px rgba(216,167,75,.30);
   transform: translateY(-2px);
 }
 
 .btn-outline{
-  background: rgba(255,255,255,.10);
-  border-color: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.30);
   color: #fff;
 }
 .btn-outline:hover{
-  background: rgba(255,255,255,.16);
+  background: rgba(255,255,255,.14);
   transform: translateY(-2px);
 }
 
@@ -270,61 +271,62 @@ small{ color: var(--muted2); }
 .btns{ display:flex; gap: 12px; flex-wrap: wrap; }
 
 /* =========================
-   HERO (ALL PAGES) - FIXED
-   Uses /assets/truss.jpg + dark overlay
+   HERO (MOCK-IDENTICAL STYLE)
+   - photo background
+   - left aligned content
+   - no big box
+   - gradient readability left -> right
 ========================= */
 .hero,
 .page-hero{
   position: relative;
+  color: #fff;
+  padding: 90px 0 84px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+
   background:
-    radial-gradient(900px 420px at 18% 15%, rgba(216,167,75,.18), transparent 55%),
-    linear-gradient(rgba(12, 40, 25, 0.78), rgba(12, 40, 25, 0.78)),
+    radial-gradient(900px 420px at 14% 10%, rgba(216,167,75,.14), transparent 55%),
+    linear-gradient(90deg,
+      rgba(12,40,25,.88) 0%,
+      rgba(12,40,25,.72) 42%,
+      rgba(12,40,25,.28) 100%
+    ),
     url('/assets/truss.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  color: #fff;
-  padding: 92px 0;
-  border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
 .hero-inner,
 .page-hero-inner{
-  max-width: 920px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 720px;       /* keeps it tight like mock */
+  margin: 0;              /* not centered */
+  text-align: left;       /* key */
   padding: 0 var(--pad);
-
-  /* subtle readability layer (keeps it clean) */
-  background: rgba(15, 28, 23, 0.14);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: 18px;
-  padding-top: 22px;
-  padding-bottom: 22px;
 }
 
 .hero h1,
 .page-hero h1{
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  line-height: 1.15;
+  font-size: clamp(2.3rem, 4.3vw, 3.4rem);
+  line-height: 1.08;
   margin: 0 0 14px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  font-weight: 950;
 }
 
 .hero-sub{
-  font-size: 1.08rem;
-  max-width: 760px;
-  margin: 0 auto 24px;
-  color: #e4ece9;
+  font-size: 1.05rem;
+  max-width: 620px;
+  margin: 0 0 22px;
+  color: rgba(255,255,255,.88);
 }
 
 .hero-actions{
   display:flex;
-  justify-content:center;
+  justify-content:flex-start;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .hero-trust{
@@ -332,12 +334,15 @@ small{ color: var(--muted2); }
   padding: 0;
   margin: 0;
   display:flex;
-  justify-content:center;
-  gap: 18px;
+  justify-content:flex-start;
+  gap: 16px;
   flex-wrap: wrap;
   font-size: .95rem;
-  color: #d6e2dc;
+  color: rgba(255,255,255,.82);
 }
+
+/* Optional: if you use checkmarks like ✓ in the markup */
+.hero-trust li{ display:flex; align-items:center; gap: 8px; }
 
 /* =========================
    GRID + CARDS
@@ -478,7 +483,7 @@ small{ color: var(--muted2); }
 .cta p{ color: rgba(255,255,255,.92); }
 
 /* =========================
-   CONTACT FORM (SIMPLE + PRO)
+   CONTACT FORM
 ========================= */
 .form{
   display:grid;
