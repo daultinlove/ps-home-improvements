@@ -245,14 +245,20 @@ small{ color: var(--muted2); }
   color: #0f1c17;
   box-shadow: 0 10px 22px rgba(216,167,75,.20);
 }
-.btn-primary:hover{ box-shadow: 0 14px 30px rgba(216,167,75,.28); }
+.btn-primary:hover{
+  box-shadow: 0 14px 30px rgba(216,167,75,.28);
+  transform: translateY(-2px);
+}
 
 .btn-outline{
   background: rgba(255,255,255,.10);
   border-color: rgba(255,255,255,.35);
   color: #fff;
 }
-.btn-outline:hover{ background: rgba(255,255,255,.16); }
+.btn-outline:hover{
+  background: rgba(255,255,255,.16);
+  transform: translateY(-2px);
+}
 
 .btn-dark{
   background: var(--ink);
@@ -264,13 +270,20 @@ small{ color: var(--muted2); }
 .btns{ display:flex; gap: 12px; flex-wrap: wrap; }
 
 /* =========================
-   HERO (ALL PAGES)
+   HERO (ALL PAGES) - FIXED
+   Uses /assets/truss.jpg + dark overlay
 ========================= */
 .hero,
 .page-hero{
+  position: relative;
   background:
-    radial-gradient(900px 420px at 18% 15%, rgba(216,167,75,.20), transparent 55%),
-    linear-gradient(135deg, var(--forest), var(--forest2));
+    radial-gradient(900px 420px at 18% 15%, rgba(216,167,75,.18), transparent 55%),
+    linear-gradient(rgba(12, 40, 25, 0.78), rgba(12, 40, 25, 0.78)),
+    url('/assets/truss.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   color: #fff;
   padding: 92px 0;
   border-bottom: 1px solid rgba(255,255,255,.12);
@@ -282,6 +295,13 @@ small{ color: var(--muted2); }
   margin: 0 auto;
   text-align: center;
   padding: 0 var(--pad);
+
+  /* subtle readability layer (keeps it clean) */
+  background: rgba(15, 28, 23, 0.14);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 18px;
+  padding-top: 22px;
+  padding-bottom: 22px;
 }
 
 .hero h1,
