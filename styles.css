@@ -588,3 +588,17 @@ small{ color: var(--muted2); }
   border: 1px solid rgba(255,255,255,.16) !important;
   color: #fff !important;
 }
+
+/* ===== HERO: match the mock scale + framing ===== */
+.hero,
+.page-hero{
+  min-height: 540px !important;          /* makes hero larger like the mock */
+  display: flex !important;
+  align-items: center !important;
+
+  /* show more of the right-side truss */
+  background-position: 86% 40% !important;
+
+  /* keep cover, but reduce "zoom" slightly */
+  background-size: 110% auto !important;
+}
