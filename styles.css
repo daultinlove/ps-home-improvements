@@ -404,6 +404,37 @@ small{ color: var(--muted2); }
 .cap small{ font-weight: 700; color: var(--muted); }
 
 /* =========================
+   GALLERY (REAL PHOTOS)
+========================= */
+.gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.gallery-grid a{
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(15,28,23,.10);
+  box-shadow: var(--shadow-sm);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.gallery-grid a:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.gallery-grid img{
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
    CTA BAND
 ========================= */
 .cta{
