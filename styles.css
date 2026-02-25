@@ -525,28 +525,3 @@ small{ color: var(--muted2); }
 @media (max-width: 768px){
   .footer .container{ grid-template-columns: 1fr; }
 }
-/* ===== FINAL POLISH to match the pitch screenshot ===== */
-.hero,
-.page-hero{
-  /* slightly brighter + cleaner */
-  background:
-    radial-gradient(900px 420px at 14% 10%, rgba(216,167,75,.10), transparent 55%),
-    linear-gradient(90deg,
-      rgba(10,10,10,.74) 0%,
-      rgba(10,10,10,.48) 45%,
-      rgba(10,10,10,.06) 100%
-    ),
-    url("/assets/truss-hero.jpg") !important;
-
-  /* tiny bump in contrast without changing the image file */
-  filter: saturate(1.02) contrast(1.03);
-}
-
-.hero-inner,
-.page-hero-inner{
-  padding-left: clamp(44px, 5vw, 84px) !important;
-}
-
-.hero-sub{
-  color: rgba(255,255,255,.90) !important;
-}
