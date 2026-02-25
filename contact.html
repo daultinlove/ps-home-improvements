@@ -83,32 +83,35 @@
         <h3 class="h3">Estimate Request</h3>
         <p class="p">Use this form layout for the demo. (Currently uses a mailto action.)</p>
 
-        <form class="form" action="mailto:paul.wayne.dwyer@gmail.com" method="post" enctype="text/plain">
+        <form class="form" action="https://formspree.io/f/xykdlbgj" method="POST">
+          <input type="hidden" name="_subject" value="New Estimate Request - P&S Website" />
+          <input type="hidden" name="_next" value="https://www.pshomeimprovementsllc.com/thank-you.html" />
+          <input type="text" name="_gotcha" style="display:none" />
           <div class="field-row">
             <div class="field">
               <label for="name">Full Name</label>
-              <input id="name" name="Name" type="text" placeholder="John Smith" required />
+              <input id="name" name="name" type="text" placeholder="John Smith" required />
             </div>
             <div class="field">
               <label for="phone">Phone</label>
-              <input id="phone" name="Phone" type="tel" placeholder="(270) 446-9463" required />
+              <input id="phone" name="phone" type="tel" placeholder="(270) 446-9463" required />
             </div>
           </div>
 
           <div class="field-row">
             <div class="field">
               <label for="email">Email (optional)</label>
-              <input id="email" name="Email" type="email" placeholder="john@email.com" />
+              <input id="email" name="email" type="email" placeholder="john@email.com" />
             </div>
             <div class="field">
               <label for="service">Service Type</label>
-              <input id="service" name="Service" type="text" placeholder="Remodel / Repair / Finish Work / Small Build" />
+              <input id="service" name="service" type="text" placeholder="Remodel / Repair / Finish Work / Small Build" />
             </div>
           </div>
 
           <div class="field">
             <label for="details">Project Details</label>
-            <textarea id="details" name="Details" rows="5" placeholder="Tell us what you want done, timeline, and any details. Photos help with faster quotes."></textarea>
+            <textarea id="details" name="details" rows="5" placeholder="Tell us what you want done, timeline, and any details. Photos help with faster quotes."></textarea>
           </div>
 
           <button class="btn btn-primary" type="submit">Send Request</button>
