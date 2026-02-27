@@ -400,6 +400,28 @@ small{ color: var(--muted2); }
 }
 
 /* =========================
+   TESTIMONIALS
+========================= */
+.card.testimonial { padding: 18px 18px 16px; }
+
+.card.testimonial .stars{
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.card.testimonial .quote{
+  margin: 0 0 12px;
+  line-height: 1.65;
+}
+
+.card.testimonial .name{
+  margin: 0;
+  font-weight: 600;
+  opacity: .9;
+}
+
+/* =========================
    GALLERY PLACEHOLDERS
 ========================= */
 .gallery{
